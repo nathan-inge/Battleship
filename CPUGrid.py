@@ -1,4 +1,4 @@
-import mycTurtle
+import turtle
 import random
 from Grid import *
 class CPUGrid(Grid):
@@ -6,7 +6,7 @@ class CPUGrid(Grid):
         self.size = size
         self.scalar = scalar
         self.fontSize = self.scalar//3
-        self.t = mycTurtle.Turtle()
+        self.t = turtle.Turtle()
         self.shipLocations = []
         self.numShips = self.size//3
         #super().__init__(size,scalar)
