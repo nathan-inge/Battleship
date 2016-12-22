@@ -1,11 +1,11 @@
-import cTurtle
+import turtle
 import random
 class Grid:
     def __init__(self,size = 10, scalar = 50):
         self.size = size
         self.scalar = scalar
         self.fontSize = self.scalar//3
-        self.t = cTurtle.Turtle()
+        self.t = turtle.Turtle()
         self.shipLocations = []
         self.numShips = self.size//3
 
@@ -34,7 +34,8 @@ class Grid:
                 self.t.forward(self.scalar)
             self.t.up()
             self.t.setposition(-(self.scalar/3),(row*self.scalar)+(self.scalar/3))
-            self.t.write(str(row+1),font = ('Arial',self.fontSize, 'normal'))   
+            self.t.write(str(row+1),font = ('Arial',self.fontSize, 'normal'))  
+    self.t.exitOnClick()
 
 
     def writeTitle(self,title):
