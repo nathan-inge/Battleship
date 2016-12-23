@@ -5,21 +5,20 @@ import random
 def main():
     title = '*****{}*****'.format('Welcome to Battleship!')
     print(title)
+
     
     diff = input('Please select your difficulty (easy,medium,hard,impossible: \n')
 
     if diff == 'easy':
-        g = Grid(5,40)
-        cpu = CPUGrid(5,40)
+        g = Grid(5)
+        cpu = CPUGrid(5)
     elif diff == 'medium':
-        g = Grid(10,40)
-        cpu = CPUGrid(10,40)
+        g = Grid(10)
+        cpu = CPUGrid(10)
     elif diff == 'hard':
-        g = Grid(20,20)
-        cpu = CPUGrid(20,20)
-    else:
-        g = Grid(30,20)
-        cpu = CPUGrid(30,20)
+        g = Grid(15)
+        cpu = CPUGrid(15)
+    
 
     print('OK! Lets set up the board!')
     print('Please wait')
@@ -79,14 +78,16 @@ def main():
         print('You got all the ships! Thanks for playing!')
     else:
         print('You lost! All your ships are sunk!')
+
+
+    
+        
+
+    
            
         
 
 main()
-    
-    
-            
-
     
     
             
