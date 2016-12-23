@@ -1,26 +1,31 @@
 import turtle
 import random
+import tkinter as tk
 class Grid:
-    def __init__(self,size = 10, scalar = 50):
+    def __init__(self,size = 10):
         self.size = size
-        self.scalar = scalar
-        self.fontSize = self.scalar//3
+
+        root = tk.Tk()
+        self.screen_height = int(root.winfo_screenheight())
+        
+        self.scalar = self.screen_height//(self.size*4)
+        
+        self.fontSize = self.scalar//2
         self.t = turtle.Turtle()
         self.s = turtle.Screen()
         self.shipLocations = []
-        self.numShips = self.size//3
-
-    def setScreen(self):
-        
-        self.t.setposition(0,0)    
+        self.numShips = self.size//3   
                 
     def drawGrid(self):
-        self.s.setup(self.scalar*(self.size+2),self.scalar*(self.size+2),-1,0)
-        #self.s.setup(.33,.5,1,0)
-        self.s.bgcolor('gray')
+        
+        self.screen_height -= int(self.screen_height * .1)      
+        self.s.setup(self.screen_height/2,self.screen_height/2,-1,0)
+        
+        #self.s.bgcolor('gray')
         self.s.title('BATTLESHIP - Player')
         totLen = (self.size * self.scalar) + self.scalar
         self.s.setworldcoordinates(-self.scalar,-self.scalar,totLen,totLen)
+        
         self.t.speed(0)
         self.t.hideturtle()
         def drawSquare(t,sideLen):
@@ -29,7 +34,7 @@ class Grid:
                 t.left(90)
         for bottomRow in range(self.size):
             self.t.up()
-            self.t.setposition((bottomRow*self.scalar)+(self.scalar/3),-(self.scalar/2))
+            self.t.setposition((bottomRow*self.scalar)+(self.scalar/3),-(self.scalar/1.5))
             self.t.write(str(bottomRow+1),font = ('Arial',self.fontSize, 'normal'))
         for row in range(self.size):
             self.t.up()            
@@ -39,15 +44,9 @@ class Grid:
                 drawSquare(self.t,self.scalar)
                 self.t.forward(self.scalar)
             self.t.up()
-            self.t.setposition(-(self.scalar/3),(row*self.scalar)+(self.scalar/3))
+            self.t.setposition(-(self.scalar/2),(row*self.scalar)+(self.scalar/3))
             self.t.write(str(row+1),font = ('Arial',self.fontSize, 'normal'))  
         self.s.listen()
-
-
-    def writeTitle(self,title):
-        self.t.up()
-        self.t.setposition((self.size//3)*self.scalar,(self.size*self.scalar)+(self.scalar/3))
-        self.t.write(title,font = ('Arial',self.fontSize, 'normal'))
             
 
     def markHit(self,x,y,color = 'green'):
@@ -136,6 +135,16 @@ class Grid:
 ##
 ##main()
 ##main()
+    
+        
+
+        
+                
+
+
+    
+            
+
     
         
 
