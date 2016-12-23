@@ -1,6 +1,5 @@
 from Grid import *
 from CPUGrid import *
-import cTurtle
 import random
 
 def main():
@@ -10,12 +9,11 @@ def main():
     diff = input('Please select your difficulty (easy,medium,hard,impossible: \n')
 
     if diff == 'easy':
-        g = Grid(5,20)
-        cpu = CPUGrid(5,20)
-
+        g = Grid(5,40)
+        cpu = CPUGrid(5,40)
     elif diff == 'medium':
-        g = Grid(10,20)
-        cpu = CPUGrid(10,20)
+        g = Grid(10,40)
+        cpu = CPUGrid(10,40)
     elif diff == 'hard':
         g = Grid(20,20)
         cpu = CPUGrid(20,20)
@@ -27,15 +25,11 @@ def main():
     print('Please wait')
 
     #Set up user board
-    #g.setScreen()
     g.drawGrid()
-    g.writeTitle('BATTLESHIP - Your Board')
     g.generateShips()
 
     #Set up cpu board
-    #cpu.setScreen()
     cpu.drawGrid()
-    cpu.writeTitle('BATTLESHIP - CPU Board')
     cpu.generateShips()
     cpu.showShips()
     
@@ -89,6 +83,10 @@ def main():
         
 
 main()
+    
+    
+            
+
     
     
             
