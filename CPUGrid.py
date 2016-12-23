@@ -1,4 +1,4 @@
-import turtle
+import myturtle
 import random
 from Grid import *
 class CPUGrid(Grid):
@@ -6,10 +6,10 @@ class CPUGrid(Grid):
         self.size = size
         self.scalar = scalar
         self.fontSize = self.scalar//3
-        self.t = turtle.Turtle()
+        self.t = myturtle.Turtle()
+        self.s = myturtle.Screen()
         self.shipLocations = []
         self.numShips = self.size//3
-        #super().__init__(size,scalar)
         self.correctGuesses = []
         self.wrongGuesses = []
 
@@ -55,35 +55,41 @@ class CPUGrid(Grid):
             self.wrongGuesses.append((x,y))
             return False
 
+    def drawGrid(self):
+        self.s.setup(self.scalar*(self.size+2),self.scalar*(self.size+2),-1,-1)
+        #self.s.setup(.33,.5,-1,-1)
+        self.s.bgcolor('gray')
+        self.s.title('BATTLESHIP - CPU')
+        totLen = (self.size * self.scalar) + self.scalar
+        self.s.setworldcoordinates(-self.scalar,-self.scalar,totLen,totLen)
+        self.t.speed(0)
+        self.t.hideturtle()
+        def drawSquare(t,sideLen):
+            for i in range(4):
+                t.forward(sideLen)
+                t.left(90)
+        for bottomRow in range(self.size):
+            self.t.up()
+            self.t.setposition((bottomRow*self.scalar)+(self.scalar/3),-(self.scalar/2))
+            self.t.write(str(bottomRow+1),font = ('Arial',self.fontSize, 'normal'))
+        for row in range(self.size):
+            self.t.up()            
+            self.t.setposition(0,row*self.scalar)
+            self.t.down()
+            for column in range(self.size):
+                drawSquare(self.t,self.scalar)
+                self.t.forward(self.scalar)
+            self.t.up()
+            self.t.setposition(-(self.scalar/3),(row*self.scalar)+(self.scalar/3))
+            self.t.write(str(row+1),font = ('Arial',self.fontSize, 'normal'))  
+        self.s.listen()
+
+        
     def getCorrectGuesses(self):
         return self.correctGuesses
 
     def getWrongGuesses(self):
         return self.wrongGuesses
 
-##    def drawGrid(self):
-##        self.t.speed(0)
-##        self.t.hideturtle()
-##        def drawSquare(t,sideLen):
-##            for i in range(4):
-##                t.forward(sideLen)
-##                t.left(90)
-##        for bottomRow in range(self.size):
-##            self.t.up()
-##            self.t.setposition((bottomRow*self.scalar)+(self.scalar/3),-(self.scalar/2))
-##            self.t.write(str(bottomRow+1),font = ('Arial',self.fontSize, 'normal'))
-##        for row in range(self.size):
-##            self.t.up()            
-##            self.t.setposition(0,row*self.scalar)
-##            self.t.down()
-##            for column in range(self.size):
-##                drawSquare(self.t,self.scalar)
-##                self.t.forward(self.scalar)
-##            self.t.up()
-##            self.t.setposition((self.size*self.scalar)+(self.scalar/3),(row*self.scalar)+(self.scalar/3))
-##            self.t.write(str(row+1),font = ('Arial',self.fontSize, 'normal'))
 
-    
-    
-    
         
