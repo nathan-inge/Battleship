@@ -20,13 +20,54 @@ class CPUGrid(Grid):
     def guess(self):
         okGuess = False
         while(okGuess == False):
-            if len(self.correctGuesses)%3 == 0:
-                x = random.randrange(1,self.size+1)
-                y = random.randrange(1,self.size+1)
-            else:
+            if len(self.correctGuesses) != 0:
                 lastHit = self.correctGuesses[-1]
                 lastX = lastHit[0]
                 lastY = lastHit[1]
+                
+            if len(self.correctGuesses)%3 == 0:
+                x = random.randrange(1,self.size+1)
+                y = random.randrange(1,self.size+1)
+
+##            elif len(self.correctGuesses)%2 == 0:
+##                secondLastHit = self.correctGuesses[-2]
+##                secondLastX = secondLastHit[0]
+##                secondLastY = secondLastHit[1]
+##                val = random.randrange(0,2)
+##
+##                if secondLastX > lastX:
+##                    x = lastX - 1
+##                    y = lastY
+##                    if x <= 0:
+##                        x = secondLastX + 1
+##                elif secondLastX < lastX:
+##                    x = lastX + 1
+##                    y = lastY
+##                    if x > self.size:
+##                        x = secondLastX - 1
+##                        y = lastY
+##                
+##                        
+##                        
+##                elif secondLastY > lastY:
+##                    x = lastX
+##                    y = lastY - 1
+##                    if y <= 0:
+##                        x = lastX
+##                        y = secondLastY + 1
+##                    
+##
+##                elif secondLastY < lastY:
+##                    x = lastX
+##                    y = lastY - 1
+##                    if lastY + 1 > self.size:
+##                        x = lastX
+##                        y = secondLastY - 1
+##                    else:
+                        
+
+                
+            else:                
                 xORy = random.randrange(0,5)
                 if xORy == 0:
                     lastX += 1
@@ -96,4 +137,6 @@ class CPUGrid(Grid):
 
     def getWrongGuesses(self):
         return self.wrongGuesses
+
+
 
