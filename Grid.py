@@ -121,29 +121,6 @@ class Grid:
     def getNumShips(self):
         return self.numShips
 
-##def main():
-##    g = Grid()
-##    g.setScreen()
-##    g.drawGrid()
-##    g.generateShips()
-##    g.showShips()
-##    g.guess(5,5)
-##    g.guess(2,7)
-##    g.guess(7,2)
-##    
-##    
-##
-##main()
-##main()
-    
-        
-
-        
-                
-
-
-    
-            
 
     
         
@@ -153,14 +130,4 @@ class Grid:
 
 
     
-            
 
-    
-        
-
-        
-                
-
-
-    
-            

@@ -97,7 +97,3 @@ class CPUGrid(Grid):
     def getWrongGuesses(self):
         return self.wrongGuesses
 
-
-
-
-        

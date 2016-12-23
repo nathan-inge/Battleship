@@ -77,17 +77,18 @@ def main():
     if numPlayerHits == numShips*3:
         print('You got all the ships! Thanks for playing!')
     else:
-        print('You lost! All your ships are sunk!') 
+        print('You lost! All your ships are sunk!')    
+
+
+
+    
+        
 
     
            
         
 
 main()
-    
-    
-            
-
     
     
             
